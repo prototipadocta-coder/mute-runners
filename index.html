@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUTE_RUNNERS - Cyberpunk Anti-Noise Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="render-canvas"></canvas>
+
+        <!-- UI Overlay -->
+        <div id="ui-layer">
+            <div id="hud-top">
+                <div class="hud-box">
+                    <span class="label">CIUDAD PUREZA</span>
+                    <div class="bar-bg"><div id="purity-bar" class="bar-fill" style="width: 20%;"></div></div>
+                    <span id="purity-text" class="value">20%</span>
+                </div>
+                <div class="hud-title">MUTE_RUNNERS</div>
+                <div class="hud-box align-right">
+                    <span class="label">ESTRÉS ACÚSTICO</span>
+                    <div class="bar-bg"><div id="stress-bar" class="bar-fill stress" style="width: 0%;"></div></div>
+                    <span id="stress-text" class="value">0 dB</span>
+                </div>
+            </div>
+
+            <div id="crosshair">+</div>
+
+            <div id="hud-bottom">
+                <div class="hud-stat">
+                    <span class="stat-label">FUENTES SILENCIADAS</span>
+                    <span id="score-text" class="stat-value">0 / 8</span>
+                </div>
+                <div id="combo-display" class="combo-hidden">BEAT PERFECTO! x<span id="combo-count">1</span></div>
+                <div class="hud-stat align-right">
+                    <span class="stat-label">MODO NULL-EMITTER</span>
+                    <span id="weapon-mode" class="stat-value pulse">FASE INVERTIDA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-overlay" class="overlay">
+            <div class="card">
+                <h1 class="glitch" data-text="MUTE_RUNNERS">MUTE_RUNNERS</h1>
+                <p class="subtitle">Megalópolis Neo-Decibel está saturada por la contaminación acústica de AudioCorp.</p>
+                
+                <div class="instructions">
+                    <h3>CONTROLES</h3>
+                    <ul>
+                        <li><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / Flechas : Moverse</li>
+                        <li><kbd>MOUSE</kbd> : Apuntar y rotar cámara</li>
+                        <li><kbd>CLIC IZQUIERDO</kbd> : Disparar Pulso de Silencio (Null-Emitter)</li>
+                        <li><kbd>ESPACIO</kbd> : Salto antigravedad</li>
+                    </ul>
+                </div>
+
+                <p class="tip">💡 <i>Tip: Dispara al ritmo del beat visual para expandir la onda de purificación.</i></p>
+
+                <button id="btn-start" class="btn-cyber">INICIAR MISIÓ N</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-overlay" class="overlay hidden">
+            <div class="card error-card">
+                <h2>SOBRECARGA SENSORIAL</h2>
+                <p>Tu nivel de estrés acústico sobrepasó los límites permitidos.</p>
+                <p>Fuentes neutralizadas: <strong id="final-score">0</strong></p>
+                <button id="btn-restart" class="btn-cyber">REINTENTAR</button>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-overlay" class="overlay hidden">
+            <div class="card success-card">
+                <h2>¡ZONA PURIFICADA!</h2>
+                <p>Has silenciado todas las fuentes de contaminación auditiva en el sector Neo-Decibel.</p>
+                <p>Puntuación Final: <strong id="victory-score">100% Pureza</strong></p>
+                <button id="btn-win-restart" class="btn-cyber">JUGAR DE NUEVO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
